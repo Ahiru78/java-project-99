@@ -18,5 +18,6 @@ rsa:
   public-key: classpath:certs/public.pem
 
 sentry:
-  dsn: https://13a6bd37a9cf78ed2fdf2001b4161f99@o4510962873401344.ingest.de.sentry.io/4510962877988944
+  dsn: https://0b4b253407f7fe7614e0c17f037716d9@o4510962873401344.ingest.de.sentry.io/4510962878906448
   send-default-pii: true
+  traces-sample-rate: 1.0
