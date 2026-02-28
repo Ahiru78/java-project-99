@@ -1,29 +1,22 @@
----
 logging:
-level:
-root: WARN
-org:
-springframework:
-# web: DEBUG
-security: DEBUG
+  level:
+    root: WARN
+    org:
+      springframework:
+        security: DEBUG
 
 spring:
-# mvc:
-#   log-request-details: true
-#   log-resolved-exception: true
-# codec:
-#   log-request-details: true
-jpa:
-generate-ddl: true
-show-sql: true
-output:
-ansi:
-enabled: always
-
-sentry:
-dsn: https://examplePublicKey@o0.ingest.sentry.io/0
-tracesSampleRate: 1.0
+  jpa:
+    generate-ddl: true
+    show-sql: true
+  output:
+    ansi:
+      enabled: always
 
 rsa:
-private-key: classpath:certs/private.pem
-public-key: classpath:certs/public.pem
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
+
+sentry:
+  dsn: https://13a6bd37a9cf78ed2fdf2001b4161f99@o4510962873401344.ingest.de.sentry.io/4510962877988944
+  send-default-pii: true

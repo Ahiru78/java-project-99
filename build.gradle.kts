@@ -5,7 +5,7 @@ plugins {
 	id("io.freefair.lombok") version "8.6"
 	id("org.springframework.boot") version "3.3.1"
 	id("io.spring.dependency-management") version "1.1.5"
-	id("io.sentry.jvm.gradle") version "5.2.0"
+	id("io.sentry.jvm.gradle") version "6.1.0"
 	id("org.sonarqube") version "7.1.0.6387"
 }
 
@@ -24,7 +24,7 @@ repositories {
 }
 
 application {
-	mainClass = "hexlet.code.AppApplication"
+	mainClass = "hexlet.code.Application"
 }
 
 dependencies {
@@ -66,4 +66,16 @@ sonar {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+sentry {
+	includeSourceContext = true
+
+	org = "ahiru78"
+	projectName = "java-spring-boot"
+	authToken = System.getenv("SENTRY_AUTH_TOKEN")
+}
+
+tasks.named("sentryBundleSourcesJava").configure {
+	enabled = System.getenv("SENTRY_AUTH_TOKEN") != null
 }

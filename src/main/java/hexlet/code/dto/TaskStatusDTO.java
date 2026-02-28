@@ -8,15 +8,13 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
-public class UserDTO {
+public class TaskStatusDTO {
 
     private Long id;
 
-    private String email;
+    private String name;
 
-    private String firstName;
-
-    private String lastName;
+    private String slug;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate createdAt;
