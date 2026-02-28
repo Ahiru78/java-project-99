@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TaskStatusRepository extends JpaRepository<TaskStatus, Long> {
     TaskStatus findBySlug(String slug);
+    TaskStatus findByName(String name);
 }

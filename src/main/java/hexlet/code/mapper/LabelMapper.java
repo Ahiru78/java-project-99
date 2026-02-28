@@ -20,5 +20,7 @@ public abstract class LabelMapper {
 
     public abstract Label map(LabelCreateDTO dto);
 
+    public abstract Label map(LabelDTO dto);
+
     public abstract void update(LabelUpdateDTO update, @MappingTarget Label destination);
 }
