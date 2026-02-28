@@ -45,14 +45,14 @@ public class UsersController {
         return userService.findById(id);
     }
 
-    @PreAuthorize("@userUtils.getCurrentUser().getEmail() == #email")
+    @PreAuthorize("@userUtils.getCurrentUser().getId() == #id")
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     UserDTO update(@Valid @RequestBody UserUpdateDTO data, @PathVariable Long id) {
         return userService.update(data, id);
     }
 
-    @PreAuthorize("@userUtils.getCurrentUser().getEmail() == #email")
+    @PreAuthorize("@userUtils.getCurrentUser().getId() == #id")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void delete(@PathVariable Long id) {
