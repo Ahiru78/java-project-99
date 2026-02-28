@@ -1,3 +1,5 @@
+run-dist:
+	./build/install/app/bin/app
 run:
 	./gradlew run --args='--spring.profiles.active=application-dev'
 build:
