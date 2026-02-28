@@ -6,7 +6,7 @@ plugins {
 	id("org.springframework.boot") version "3.3.1"
 	id("io.spring.dependency-management") version "1.1.5"
 	id("io.sentry.jvm.gradle") version "6.1.0"
-	id("org.sonarqube") version "7.1.0.6387"
+	id("org.sonarqube") version "7.2.2.6593"
 }
 
 group = "hexlet.code"
