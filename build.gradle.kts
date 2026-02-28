@@ -61,6 +61,7 @@ sonar {
 	properties {
 		property("sonar.projectKey", "Ahiru78_java-project-99")
 		property("sonar.organization", "ahiru78")
+		property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
 	}
 }
 
