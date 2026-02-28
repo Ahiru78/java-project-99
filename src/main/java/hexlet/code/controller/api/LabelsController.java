@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.Exception;
+import io.sentry.Sentry;
+
 import java.util.List;
 
 @RestController
@@ -26,6 +29,15 @@ public class LabelsController {
 
     @Autowired
     private LabelService labelService;
+
+    @GetMapping("/debug-sentry")
+    public void triggerError() {
+        try {
+            throw new Exception("This is a test.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+    }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
