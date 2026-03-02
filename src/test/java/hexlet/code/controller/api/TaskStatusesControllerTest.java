@@ -143,7 +143,7 @@ public class TaskStatusesControllerTest {
     public void testUpdate() throws Exception {
 
         var data = new HashMap<>();
-        data.put("name", "Checked");
+        data.put("slug", "checked_at");
 
         var request = put("/api/task_statuses/" + testStatus.getId())
                 .with(token).contentType(MediaType.APPLICATION_JSON)
@@ -152,7 +152,7 @@ public class TaskStatusesControllerTest {
         mockMvc.perform(request).andExpect(status().isOk());
 
         var status = statusRepository.findById(testStatus.getId()).orElseThrow();
-        assertThat(status.getName()).isEqualTo(("Checked"));
+        assertThat(status.getSlug()).isEqualTo(("checked_at"));
     }
 
     @Test
