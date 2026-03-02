@@ -24,7 +24,7 @@ repositories {
 }
 
 application {
-	mainClass = "hexlet.code.Application"
+	mainClass = "hexlet.code.AppApplication"
 }
 
 dependencies {
