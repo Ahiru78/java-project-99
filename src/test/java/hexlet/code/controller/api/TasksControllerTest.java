@@ -12,7 +12,6 @@ import hexlet.code.repository.UserRepository;
 import hexlet.code.util.ModelGenerator;
 import org.assertj.core.api.Assertions;
 import org.instancio.Instancio;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,8 +80,12 @@ public class TasksControllerTest {
 
     @BeforeEach
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).defaultResponseCharacterEncoding(StandardCharsets.UTF_8)
-                .apply(springSecurity()).build();
+        JdbcTestUtils.deleteFromTables(jdbcTemplate, "tasks_labels", "tasks", "labels", "task_statuses", "users");
+
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac)
+                .defaultResponseCharacterEncoding(StandardCharsets.UTF_8)
+                .apply(springSecurity())
+                .build();
 
         testUser = Instancio.of(modelGenerator.getUserModel()).create();
         userRepository.save(testUser);
@@ -91,12 +94,6 @@ public class TasksControllerTest {
         testTask = Instancio.of(modelGenerator.getTaskModel()).create();
         taskRepository.save(testTask);
     }
-
-    @AfterEach
-    void tearDown() {
-        JdbcTestUtils.deleteFromTables(jdbcTemplate, "tasks_labels", "tasks", "labels", "task_statuses", "users");
-    }
-
 
     @Test
     public void testCreate() throws Exception {

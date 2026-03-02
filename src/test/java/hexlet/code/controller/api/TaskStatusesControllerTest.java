@@ -19,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.JwtRequestPostProcessor;
+import org.springframework.test.jdbc.JdbcTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -70,6 +72,9 @@ public class TaskStatusesControllerTest {
     @Autowired
     private TaskStatusMapper statusMapper;
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     private JwtRequestPostProcessor token;
 
     private User testUser;
@@ -78,8 +83,7 @@ public class TaskStatusesControllerTest {
 
     @BeforeEach
     public void setUp() {
-        userRepository.deleteAll();
-        statusRepository.deleteAll();
+        JdbcTestUtils.deleteFromTables(jdbcTemplate, "tasks_labels", "tasks", "labels", "task_statuses", "users");
 
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).defaultResponseCharacterEncoding(StandardCharsets.UTF_8)
                 .apply(springSecurity()).build();

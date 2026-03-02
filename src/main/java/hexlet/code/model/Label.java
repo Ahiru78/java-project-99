@@ -32,6 +32,7 @@ public class Label implements BaseEntity {
 
     @Column(nullable = false, unique = true)
     @Size(min = 3, max = 1000)
+    @EqualsAndHashCode.Include
     private String name;
 
     @Column(updatable = false)
